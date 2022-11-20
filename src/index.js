@@ -39,16 +39,17 @@ class RandomUsers extends Component {
           <main>
             <section className="container w-100 min-vh-100 d-flex justify-content-center align-items-center">
               {users.map((user) => (
-                <div className="card text-white bg-primary my-5  py-4 sm:w-50" style={{maxWidth: "450px"}} key='1' >
+                <div className="card text-white bg-primary my-5  py-4 sm:w-50" style={{maxWidth: "450px"}} key='0' >
                   <div className="img-container w-50 mx-auto mt-2">
                     <Image picture={user.picture} name={user.name} />
                   </div>
                   <div className="card-body pt-2">
-                    <UserName name={user.name} />
-                    <UserID login={user.login} />
-                    <UserEmail email={user.email} />
-                    <UserPhone phone={user.phone} />
-                    <UserAddress location={user.location} />
+                    <Name name={user.name} />
+                    <Age age={user.dob} />
+                    <UserName login={user.login} />
+                    <Email email={user.email} />
+                    <Phone phone={user.phone} />
+                    <Address location={user.location} />
                     <div className="d-flex text-center">
                       <Button />
                     </div>
@@ -64,15 +65,17 @@ class RandomUsers extends Component {
 
 const Image = ({ picture, name }) => <img src={picture.medium} className="card-img-top img-fluid rounded-circle border border-5 border-white mx-auto mb-4" alt={name.first} id='image' />;
 
-const UserName = ({ name }) => <h2 className="display-6 lead fw-bold pb-3 text-center">{name.title} {name.first} {name.last}</h2>;
+const Name = ({ name }) => <h2 className="fs-1 lead fw-bold text-center">{name.title} {name.first} {name.last}</h2>;
 
-const UserID = ({ login }) => <p className='fs-5 fw-light d-flex align-items-center gap-3 py-1'><i className="fa fa-user" /> <span>{login.username}</span></p>;
+const Age = ({ age }) => <p className='fs-5 fw-bold text-center pb-3'>Age: {age.age}</p>;
 
-const UserEmail = ({ email }) => <p className='fs-5 fw-light d-flex flex-wrap align-items-center gap-3 pb-1'><i className="fa-solid fa-envelope" /> <span>{email}</span></p>;
+const UserName = ({ login }) => <p className='fs-5 fw-light d-flex align-items-center gap-3 py-1'><i className="fa fa-user" /> <span>{login.username}</span></p>;
 
-const UserPhone = ({ phone }) => <p className='fs-5 fw-light d-flex align-items-center gap-3 pb-1'><i className="fa-solid fa-phone" /> <span>{phone}</span></p>;
+const Email = ({ email }) => <p className='fs-5 fw-light d-flex flex-wrap align-items-center gap-3 pb-1'><i className="fa-solid fa-envelope" /> <span>{email}</span></p>;
 
-const UserAddress = ({ location }) => {
+const Phone = ({ phone }) => <p className='fs-5 fw-light d-flex align-items-center gap-3 pb-1'><i className="fa-solid fa-phone" /> <span>{phone}</span></p>;
+
+const Address = ({ location }) => {
   const {street, city, state, country} = location;
   return (
     <p className='fs-5 fw-light d-flex gap-3 align-items-center'><i className="fa-solid fa-location-dot" /> <span>{street.number} {street.name}, {city}, {state}, {country}</span></p>
