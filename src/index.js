@@ -43,7 +43,7 @@ class RandomUsers extends Component {
                   <div className="img-container w-50 mx-auto mt-2">
                     <Image picture={user.picture} name={user.name} />
                   </div>
-                  <div className="card-body pt-2">
+                  <div className="card-body pt-2 px-md-4">
                     <Name name={user.name} />
                     <Age age={user.dob} />
                     <UserName login={user.login} />
